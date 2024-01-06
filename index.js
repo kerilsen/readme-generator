@@ -1,8 +1,68 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
+const fs = require('fs');
+
+const generateREADME = ({ title, description, installation, usage, credits, license }) =>
+  `## ${title}
+  # Description\n
+  ${description}
+  # Installation\n
+  ${installation}
+  # Usage\n
+  ${usage}
+  # Credits\n
+  ${credits}
+  # License\n
+  ${license}`;
 
 // TODO: Create an array of questions for user input
-const questions = [];
+const questions = [
+    {
+        type: 'input',
+        name: 'title',
+        message: 'What is the name of your project?',
+    },
+    {
+        type: 'input',
+        name: 'description',
+        message: `Provide a short description explaining the what, why, and how of your project.\n
+* What was your motivation?\n
+* Why did you build this project?\n
+* What problem does it solve?\n
+* What did you learn?\n`
+    },
+    {
+        type: 'input',
+        name: 'installation',
+        message: 'What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.\n'
+    },
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'Provide instructions and examples for use.\n'
+    },
+    {
+        type: 'input',
+        name: 'credits',
+        message: `List your collaborators, if any, with links to their GitHub profiles.\n
+If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.\n
+If you followed tutorials, include links to those here as well.\n`
+    },
+{
+type: 'input',
+name: 'license',
+message: 'The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project.'
+}
+];
+
+inquirer
+    .prompt(questions)
+    .then((answers) => {
+        const READMEcontent = generateREADME(answers);
+        fs.writeFile('README.md', READMEcontent, (err) =>
+        err ? console.log(err) : console.log('Successfully created README.md!')
+      );
+    });
 
 // # <Your-Project-Title>
 
@@ -10,10 +70,7 @@ const questions = [];
 
 // Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
 
-// - What was your motivation?
-// - Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-// - What problem does it solve?
-// - What did you learn?
+
 
 // ## Table of Contents (Optional)
 
@@ -73,10 +130,10 @@ const questions = [];
 // Go the extra mile and write tests for your application. Then provide examples on how to run them here.
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) { }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() { }
 
 // Function call to initialize app
 init();
