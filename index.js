@@ -2,34 +2,10 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const generateREADME = ({ username, repo, title, description, installation, usage, contributing, license, tests, email }) =>
-    `# ${title}\n
-    ![GitHub License](https://img.shields.io/github/license/${username}/${repo})\n
-  ## Description\n
-  ${description}\n
-  The GitHub repository is here: ![GitHub Repo](https://github.com/${username}/${repo})\n
-  The deployed link is here: ![Deployed page](https://${username}.github.io/${repo})\n
-## Table of Contents\n
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Tests](#tests)
-- [Questions](#questions)\n
-  ## Installation\n
-  ${installation}\n
-  ## Usage\n
-  ${usage}\n
-  ## Contributing\n
-  ${contributing}\n
-  ## License\n
-  ${license}\n
-  ## Tests\n
-  ${tests}\n
-  ## Questions\n
-  If you have any questions about this project, please contact me at ${email}.\n
-  My GitHub profile is at: ![GitHub Profile](https://github.com/${username})\n`;
+const generate = require('./utils/generateMarkdown.js');
 
+const README = ({ username, repo, title, description, installation, usage, contributing, license, tests, email });
+    
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -64,13 +40,7 @@ const questions = [
     {
         type: 'input',
         name: 'installation',
-        message: 'What are the steps required to install your project?\nProvide a step-by-step description of how to get the development environment running.\nHit enter after each step.\n'
-    },
-    {
-        type: 'confirm',
-        name: 'askAgain',
-        message: 'Want to enter another step (just hit enter for YES)?',
-        default: true,
+        message: 'What are the steps required to install your project?\nProvide a step-by-step description of how to get the development environment running.\n'
     },
     {
         type: 'input',
@@ -85,15 +55,10 @@ If you used any third-party assets that require attribution, list the creators w
 If you followed tutorials, include links to those here as well.\n`
     },
     {
-        type: 'input',
-        name: 'links',
-        message: `Provide any links you would like to include in the credits in the following format: https://github.com/username\n`
-    },
-    {
         type: 'list',
         name: 'license',
         message: `The last section of a high-quality README file is the license.\nThis lets other developers know what they can and cannot do with your project.\n
-The follow list is in order from highly protective to unconditional from https://choosealicense.com\n`,
+The following list is in order from highly protective to unconditional from https://choosealicense.com\n`,
         choices: [
             'GNU Affero General Public License v3.0',
             'GNU General Public License v3.0',
@@ -112,30 +77,32 @@ The follow list is in order from highly protective to unconditional from https:/
     }
 ];
 
-function ask(answers) {
-    const list = [];
-    list.push(answers.installation)
-    if (answers.askAgain) {
-        ask();
-    } else {
-        return list;
-    }
-}
-
-inquirer
-    .prompt(questions)
-    .then((answers) => {
-        const READMEcontent = generateREADME(answers);
-        fs.writeFile('README.md', READMEcontent, (err) =>
-            err ? console.log(err) : console.log('Successfully created README.md!')
-        );
-    });
+// inquirer
+//     .prompt(questions)
+//     .then((answers) => {
+//         const READMEcontent = generate(answers);
+//         writeToFile('README.md', READMEcontent);
+        // fs.writeFile('README.md', READMEcontent, (err) =>
+        //     err ? console.log(err) : console.log('Successfully created README.md!')
+        // );
+    // });
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) =>
+        err ? console.log(err) : console.log('Successfully created README.md!')
+    );
+}
 
 // TODO: Create a function to initialize app
-function init() { }
+function init() {
+    inquirer
+        .prompt(questions)
+        .then((answers) => {
+            README = generate(answers);
+            writeToFile('README.md', README);
+        })
+};
 
 // Function call to initialize app
 init();
