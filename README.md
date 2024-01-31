@@ -1,14 +1,14 @@
-# Weather Dashboard
-
-    ![GitHub License](https://img.shields.io/github/license/kerilsen/weather-dashboard)
+# README Generator
 
   ## Description
 
-  find out the weather
+  ![License: Apache 2.0 License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 
-  The GitHub repository is here: ![GitHub Repo](https://github.com/kerilsen/weather-dashboard)
+  GitHub repository: [https://github.com/kerilsen/readme-generator](https://github.com/kerilsen/readme-generator)
 
-  The deployed link is here: ![Deployed page](https://kerilsen.github.io/weather-dashboard)
+  Deployed link: [https://kerilsen.github.io/readme-generator](https://kerilsen.github.io/readme-generator)
+
+  
 
 ## Table of Contents
 
@@ -21,26 +21,26 @@
 
   ## Installation
 
-  try it
+  
 
   ## Usage
 
-  no
+  
 
   ## Contributing
 
-  n/a
+  
 
   ## License
 
-  MIT License
+  [License: Apache 2.0 License](https://opensource.org/licenses/Apache-2.0)
 
   ## Tests
 
-  n/a
+  
 
   ## Questions
 
   If you have any questions about this project, please contact me at keri.l.sen@gmail.com.
 
-  My GitHub profile is at: ![GitHub Profile](https://github.com/kerilsen)
+  My GitHub profile is at: [https://github.com/kerilsen](https://github.com/kerilsen)
