@@ -3,10 +3,8 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 const generate = require('./utils/generateMarkdown.js');
-
-const README = ({ username, repo, title, description, installation, usage, contributing, license, tests, email });
     
-// TODO: Create an array of questions for user input
+// Array of questions for user input
 const questions = [
     {
         type: 'input',
@@ -60,14 +58,14 @@ If you followed tutorials, include links to those here as well.\n`
         message: `The last section of a high-quality README file is the license.\nThis lets other developers know what they can and cannot do with your project.\n
 The following list is in order from highly protective to unconditional from https://choosealicense.com\n`,
         choices: [
-            'GNU Affero General Public License v3.0',
-            'GNU General Public License v3.0',
-            'GNU Lesser General Public License v3.0',
-            'Mozilla Public License 2.0',
-            'Apache License 2.0',
-            'MIT License',
-            'Boost Software License 1.0',
-            'The Unlicense',
+            { name: 'GNU Affero General Public License v3.0', value: 0 },
+            { name: 'GNU General Public License v3.0', value: 1 },
+            { name: 'GNU Lesser General Public License v3.0', value: 2 },
+            { name: 'Mozilla Public License 2.0', value: 3 },
+            { name: 'Apache License 2.0', value: 4 },
+            { name: 'MIT License', value: 5 },
+            { name: 'Boost Software License 1.0', value: 6 },
+            { name: 'The Unlicense', value: 7 }
         ]
     },
     {
@@ -77,29 +75,19 @@ The following list is in order from highly protective to unconditional from http
     }
 ];
 
-// inquirer
-//     .prompt(questions)
-//     .then((answers) => {
-//         const READMEcontent = generate(answers);
-//         writeToFile('README.md', READMEcontent);
-        // fs.writeFile('README.md', READMEcontent, (err) =>
-        //     err ? console.log(err) : console.log('Successfully created README.md!')
-        // );
-    // });
-
-// TODO: Create a function to write README file
+// Write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
         err ? console.log(err) : console.log('Successfully created README.md!')
     );
 }
 
-// TODO: Create a function to initialize app
+// Initialize app
 function init() {
     inquirer
         .prompt(questions)
         .then((answers) => {
-            README = generate(answers);
+            const README = generate(answers);
             writeToFile('README.md', README);
         })
 };
