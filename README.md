@@ -26,13 +26,13 @@
 Save the package to your local machine then navigate to the directory from your terminal.
   In your terminal window: 
   * npm init -y 
-  * npm install inquirer
+  * npm i inquirer@8.2.4
   * npm start 
   Then simply respond to the prompts until a README is generated.
 
   ## Usage
 
-  A walkthrough video is provided here to demonstrate functionality: https://drive.google.com/file/d/1wbb8G5SLfiaRg6jjEyicdIT7rDeZ0k0x/view
+  A walkthrough video is provided here to demonstrate functionality: [Video](https://drive.google.com/file/d/1wbb8G5SLfiaRg6jjEyicdIT7rDeZ0k0x/view).
 
   A sample generated README file is provided [here](./assets/sample/README.md).
 
