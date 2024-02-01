@@ -24,7 +24,7 @@ const questions = [
     {
         type: 'input',
         name: 'title',
-        message: 'What is the name of your project?',
+        message: 'What is the name of your project (i.e. My Project Name)?',
     },
     {
         type: 'input',
@@ -38,7 +38,7 @@ const questions = [
     {
         type: 'input',
         name: 'installation',
-        message: 'What are the steps required to install your project?\nProvide a step-by-step description of how to get the development environment running.\n'
+        message: 'Provide a step-by-step description of how to get the development environment running.\n'
     },
     {
         type: 'input',
@@ -71,7 +71,7 @@ The following list is in order from highly protective to unconditional from http
     {
         type: 'input',
         name: 'tests',
-        message: 'Go the extra mile and write tests for your application. Then provide examples on how to run them here.'
+        message: 'Go the extra mile and write tests for your application. Then provide examples on how to run them here.\n'
     }
 ];
 
